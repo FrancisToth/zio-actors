@@ -70,7 +70,7 @@ final class Context private[actors] (
    */
   def make[S, E1 <: Throwable, F1[+_]](
     actorName: String,
-    sup: Supervisor[E1],
+    sup: Supervisor[Any, E1],
     init: S,
     stateful: Stateful[S, E1, F1]
   ): Task[ActorRef[E1, F1]] =
@@ -138,7 +138,7 @@ final class ActorSystem private[actors] (
    */
   def make[S, E <: Throwable, F[+_]](
     actorName: String,
-    sup: Supervisor[E],
+    sup: Supervisor[Any, E],
     init: S,
     stateful: Stateful[S, E, F]
   ): Task[ActorRef[E, F]] =

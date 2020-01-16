@@ -105,7 +105,7 @@ object ActorsSpec
           val called   = new AtomicBoolean(false)
           val schedule = Schedule.recurs(10)
           val policy =
-            Supervisor.retryOrElse[Throwable, Int](
+            Supervisor.retryOrElse[Any, Throwable, Int](
               schedule,
               (_, _) => IO.effectTotal(called.set(true))
             )

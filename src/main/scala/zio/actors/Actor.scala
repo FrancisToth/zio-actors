@@ -32,7 +32,7 @@ object Actor {
   private val DefaultActorMailboxSize = 10000
 
   private[actors] final def stateful[S, E <: Throwable, F[+_]](
-    supervisor: Supervisor[E],
+    supervisor: Supervisor[Any, E],
     context: Context,
     mailboxSize: Int = DefaultActorMailboxSize
   )(initial: S)(
